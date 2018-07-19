@@ -52,4 +52,3 @@ RUN \
 
 # Install custom PHP configuration
 COPY conf/* /usr/local/etc/php/
-ADD conf/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini
