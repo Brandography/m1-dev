@@ -45,9 +45,3 @@ RUN \
 
 # Install custom PHP configuration
 COPY conf/* /usr/local/etc/php/
-
-# Install custom entrypoint
-COPY entrypoint.sh /usr/local/bin/docker-custom-entrypoint
-RUN chmod 777 /usr/local/bin/docker-custom-entrypoint
-CMD ["php-fpm"]
-ENTRYPOINT ["docker-custom-entrypoint"]
