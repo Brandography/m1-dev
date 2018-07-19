@@ -3,6 +3,8 @@ FROM php:5.6-fpm
 MAINTAINER Alexandre Jardin <info@ajardin.fr>
 LABEL maintainer="Alexandre Jardin <info@ajardin.fr>"
 
+ENV XDEBUG_PORT 9000
+
 # Install Magento requirements
 RUN \
     apt-get update -qq && \
@@ -37,11 +39,17 @@ RUN \
     perl -pi -e "s/mailhub=mail/mailhub=maildev/" /etc/ssmtp/ssmtp.conf && \
     perl -pi -e "s|;pm.status_path = /status|pm.status_path = /php_fpm_status|g" /usr/local/etc/php-fpm.d/www.conf
 
+# Install xdebug
+RUN pecl channel-update pecl.php.net \
+    && pecl install xdebug-2.5.5 \
+    && docker-php-ext-enable xdebug \
+    && sed -i -e 's/^zend_extension/\;zend_extension/g' /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+
 # Install Composer globally
 RUN \
     curl -sS https://getcomposer.org/installer | php && \
     mv composer.phar /usr/local/bin/composer
 
-
 # Install custom PHP configuration
 COPY conf/* /usr/local/etc/php/
+ADD conf/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini

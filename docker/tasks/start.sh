@@ -20,7 +20,7 @@ else
     done
 
     if [ "$occupied" != true ]; then
-        docker-compose -p $PROJECT_NAME up -d
+        XDEBUG_HOST=$(ip route get 8.8.8.8 | awk '{print $NF; exit}') docker-compose -p $PROJECT_NAME up -d
         echo "
         ===================== 🔗 Links 🔗 ===================
 
