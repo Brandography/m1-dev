@@ -1,0 +1,64 @@
+version: '3.5'
+services:
+  apache:
+    build: builds/apache
+    env_file: docker.env
+    ports:
+      - 127.0.0.1:80:80
+    volumes:
+      - ../../src:/var/www/html
+    tty: true
+    networks:
+      - magento-network
+
+  php:
+    build: builds/php
+    env_file: docker.env
+    volumes:
+      - ../../src:/var/www/html
+    tty: true
+    networks:
+      - magento-network
+
+  mysql:
+    image: mysql:5.7
+    env_file: 
+      - ./docker.env
+    ports:
+      - 127.0.0.1:3306:3306
+    volumes:
+      - db_data:/var/lib/mysql
+    tty: true
+    networks:
+      - magento-network
+
+  redis:
+    image: redis
+    ports:
+     - 6379
+    networks:
+      - magento-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    env_file: 
+      - ./docker.env
+    ports:
+     - 127.0.0.1:8080:80
+    networks:
+      - magento-network
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - 1025:1025
+      - 8025:8025
+    networks:
+      - magento-network
+
+volumes:
+    db_data: {}
+
+networks:
+  magento-network:
+    driver: bridge

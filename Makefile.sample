@@ -1,0 +1,63 @@
+PROJECT_NAME=m2
+DEV_DIR=./dev
+##
+##=====================	   Setup    =====================
+##
+update: ## Update the dev and deploy environment
+	@cd $(DEV_DIR) && git pull origin master
+	@echo "\n" && $(DEV_DIR)/init.sh $(PROJECT_NAME)
+
+##
+##=====================   Docker    =====================
+##
+start: ## Start the docker containers
+	@cd $(DEV_DIR)/docker/tasks && ./start.sh
+stop: ## Stop the Docker containers
+	@cd $(DEV_DIR)/docker/tasks && ./stop.sh
+kill: ## Kill the Docker containers
+	@cd $(DEV_DIR)/docker/tasks && ./kill.sh $(user)
+shell: ## SSH into the wordpress container
+	@cd $(DEV_DIR)/docker/tasks && ./shell.sh
+db-import: ## Import the database 
+	@cd $(DEV_DIR)/docker/tasks && ./db-import.sh $(file)
+db-dump: ## Export the database
+	@cd $(DEV_DIR)/docker/tasks && ./db-export.sh
+
+##
+##=====================   Magento   =====================
+##
+n98: ## n98-magerun commands
+	@cd $(DEV_DIR)/tasks && ./n98.sh $(t)
+
+composer: ## composer commands
+	@cd $(DEV_DIR)/tasks && ./composer.sh $(t)
+
+magento: ## magento commands
+	@cd $(DEV_DIR)/tasks && ./magento.sh $(t)
+
+xdebug: ## xdebug commands
+	@cd $(DEV_DIR)/tasks && ./xdebug.sh
+
+
+##
+##===================== Capistrano =====================
+##
+deploy: ## Deploy to server
+	@cd $(DEV_DIR)/cap && bundle exec cap $(to) deploy
+
+
+##
+##=====================    Links    =====================
+##
+##🌎     Web server:    http://localhost/
+##🛠️      PHPMyAdmin:    http://localhost:8080
+##📧     Mailhog:       http://localhost:8025
+##
+##
+
+.DEFAULT_GOAL := help
+help:
+	@grep -E '(^[a-zA-Z0-9_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) \
+		| awk 'BEGIN {FS = ":.*?## "}; {printf "  \033[32m%-30s\033[0m %s\n", $$1, $$2}' \
+		| sed -e 's/\[32m##/[33m/'
+.PHONY: help
