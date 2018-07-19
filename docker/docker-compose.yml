@@ -1,26 +1,27 @@
 version: '3.5'
 services:
-  apache:
-    build: builds/apache
-    env_file: docker.env
+  app:
+    build: images/nginx
     ports:
-      - 127.0.0.1:80:80
-    volumes:
-      - ../../src:/var/www/html
-    tty: true
+      - 80:8000
+    links:
+      - db
+      - phpfpm
+    volumes: &appvolumes
+      - ../../src:/var/www/html:delegated
+      - sockdata:/sock
     networks:
       - magento-network
 
-  php:
-    build: builds/php
-    env_file: docker.env
-    volumes:
-      - ../../src:/var/www/html
-    tty: true
+  phpfpm:
+    image: markoshust/magento-php:5.6-fpm-3
+    links:
+      - db
+    volumes: *appvolumes
     networks:
       - magento-network
 
-  mysql:
+  db:
     image: mysql:5.7
     env_file: 
       - ./docker.env
