@@ -52,5 +52,6 @@ RUN \
 
 # Install custom PHP configuration
 COPY conf/www.conf /usr/local/etc/php-fpm.d/
-COPY conf/php.ini /usr/local/etc/php/
+COPY conf/php.ini /usr/local/etc/php/php.ini
+COPY conf/php.ini /usr/local/etc/php/php-cli.ini
 COPY conf/php-fpm.conf /usr/local/etc/
