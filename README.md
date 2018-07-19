@@ -1,4 +1,4 @@
-# Magento 2 DEV and DEPLOY
+# Magento 1 DEV and DEPLOY
 ## Setup
 ### Install
 Install this environment in the root dir of your project as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). You can name the submodule dir whatever you like.
@@ -47,14 +47,6 @@ make db-dump
 Use n98-magerun cli.
 ```
 make n98 t=<commands>
-```
-Use Magento cli.
-```
-make magento t=<commands>
-```
-Use composer cli.
-```
-make composer t=<commands>
 ```
 Enable/Disable xdebug.
 ```
