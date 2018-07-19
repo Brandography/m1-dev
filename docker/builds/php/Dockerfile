@@ -51,4 +51,6 @@ RUN \
     mv composer.phar /usr/local/bin/composer
 
 # Install custom PHP configuration
-COPY conf/* /usr/local/etc/php/
+COPY conf/www.conf /usr/local/etc/php-fpm.d/
+COPY conf/php.ini /usr/local/etc/php/
+COPY conf/php-fpm.conf /usr/local/etc/
