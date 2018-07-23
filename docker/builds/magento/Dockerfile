@@ -1,7 +1,5 @@
 FROM php:5.6-apache
 
-ENV XDEBUG_PORT 9000
-
 # Install Magento requirements
 RUN \
     apt-get update -qq && \
@@ -34,7 +32,6 @@ RUN \
 # Install xdebug
 RUN pecl channel-update pecl.php.net \
     && pecl install xdebug-2.5.5 \
-    && docker-php-ext-enable xdebug \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.iniOLD
 
 
