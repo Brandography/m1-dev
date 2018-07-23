@@ -38,6 +38,22 @@ RUN pecl channel-update pecl.php.net \
     && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" > /usr/local/etc/php/conf.d/xdebug.iniOLD
 
 
+# Install Magerun
+RUN curl -O https://files.magerun.net/n98-magerun.phar \
+    && cp ./n98-magerun.phar /usr/local/bin/
+
+# Update user permissions
+RUN chmod 777 -R /var/www \
+	&& chown -R www-data:1000 /var/www \
+  	&& usermod -u 1000 www-data \
+  	&& chsh -s /bin/bash www-data
+
+# Install Mhsendmail
+RUN DEBIAN_FRONTEND=noninteractive apt-get -y install golang-go \
+    && mkdir /opt/go \
+    && export GOPATH=/opt/go \
+    && go get github.com/mailhog/mhsendmail
+
 ADD conf/php.ini /usr/local/etc/php/php.ini
 ADD conf/magento.conf /etc/apache2/sites-available/magento.conf
 ADD conf/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini
