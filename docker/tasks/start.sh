@@ -20,16 +20,16 @@ else
     done
 
     if [ "$occupied" != true ]; then
-        XDEBUG_HOST=$(ip route get 8.8.8.8 | awk '{print $NF; exit}') docker-compose -p $PROJECT_NAME up -d
+        docker-compose -p $PROJECT_NAME up -d
         echo "
-        ===================== 🔗 Links 🔗 ===================
+===================== 🔗 Links 🔗 ===================
 
-            Access your new links:
+    Access your new links:
 
-            🌎      Web server:    http://localhost/
-            🛠️       PHPMyAdmin:    http://localhost:8080
-            📧      Mailhog:       http://localhost:8025
+    🌎      Web server:    http://localhost/
+    🛠️       PHPMyAdmin:    http://localhost:8080
+    📧      Mailhog:       http://localhost:8025
 
-        ===================== 🔗 Links 🔗 ==================="
+===================== 🔗 Links 🔗 ==================="
     fi
 fi
