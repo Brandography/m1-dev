@@ -4,7 +4,7 @@ if [ -z "$1" ]; then
 	exit 0;
 else
     DEVDIR=$(dirname "$0")
-
+	
 	cd $DEVDIR
 
 	git fetch --tags
