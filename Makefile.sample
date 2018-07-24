@@ -3,9 +3,10 @@
 ##=====================	   Setup    =====================
 ##
 update: ## Update the dev and deploy environment
-	@cd $(DEV_DIR) && git pull origin master
+    @cd $(DEV_DIR) \
+    && git fetch --tags \
+    && git checkout $(git describe --tags $(git rev-list --tags --max-count=1))
 	@echo "\n" && $(DEV_DIR)/init.sh $(PROJECT_NAME)
-
 ##
 ##=====================   Docker    =====================
 ##
