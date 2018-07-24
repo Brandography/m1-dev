@@ -57,8 +57,6 @@ make xdebug
 make deploy to=<production/staging>
 ```
 ## Links
-```
 🌎      Web server:    http://localhost/
 🛠️      PHPMyAdmin:    http://localhost:8080
 📧      Mailhog:       http://localhost:8025
-```
