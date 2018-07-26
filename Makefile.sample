@@ -15,8 +15,10 @@ stop: ## Stop the Docker containers
 	@cd $(DEV_DIR)/docker/tasks && ./stop.sh
 kill: ## Kill the Docker containers
 	@cd $(DEV_DIR)/docker/tasks && ./kill.sh $(user)
-shell: ## SSH into the wordpress container
-	@cd $(DEV_DIR)/docker/tasks && ./shell.sh
+shell: ## SSH into the magento container
+	@cd $(DEV_DIR)/docker/tasks && ./shell.sh $(user)
+db-shell: ## SSH into the db container
+	@cd $(DEV_DIR)/docker/tasks && ./db-shell.sh
 db-import: ## Import the database 
 	@cd $(DEV_DIR)/docker/tasks && ./db-import.sh $(file)
 db-dump: ## Export the database

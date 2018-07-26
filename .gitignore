@@ -1,0 +1,8 @@
+*.sql
+*.gz
+log
+
+# Capistrano deploy configs
+cap/config/deploy/staging.rb
+cap/config/deploy/production.rb
+cap/config/deploy.rb
