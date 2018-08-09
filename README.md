@@ -3,7 +3,7 @@
 ### Install
 Install this environment in the root dir of your project as a [git submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules). You can name the submodule dir whatever you like.
 ```
-git submodule add git@github.com:brandography/m2-dev.git <submodule dir>
+git submodule add git@github.com:brandography/m1-dev.git <submodule dir>
 ```
 ### Initialize
 ```
