@@ -45,6 +45,9 @@ RUN chmod 777 -R /var/www \
   	&& usermod -u 1000 www-data \
   	&& chsh -s /bin/bash www-data
 
+RUN a2enmod rewrite
+RUN service apache2 restart
+
 # Install Mhsendmail
 RUN DEBIAN_FRONTEND=noninteractive apt-get -y install golang-go \
     && mkdir /opt/go \
