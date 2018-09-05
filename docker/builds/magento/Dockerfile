@@ -39,6 +39,10 @@ RUN pecl channel-update pecl.php.net \
 RUN curl -O https://files.magerun.net/n98-magerun.phar \
     && cp ./n98-magerun.phar /usr/local/bin/
 
+# Install MPMD
+RUN mkdir -p /var/www/.n98-magerun/modules/
+RUN git clone https://github.com/AOEpeople/mpmd.git /var/www/.n98-magerun/modules/mpmd
+
 # Update user permissions
 RUN chmod 777 -R /var/www \
 	&& chown -R www-data:1000 /var/www \
