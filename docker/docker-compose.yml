@@ -11,8 +11,8 @@ services:
       - magento-network
 
   db:
-    image: mysql:5.7
-    env_file: 
+    build: builds/mysql
+    env_file:
       - ./docker.env
     ports:
       - 3300:3306
@@ -31,7 +31,7 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    env_file: 
+    env_file:
       - ./docker.env
     ports:
      - 8080:80
