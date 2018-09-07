@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.6.0] - 2018-09-07
+### Changed
+- db import script added url renaming + cookie domain set to ""
+
 ## [0.5.0] - 2018-09-06
 - Downgraded mysql to 5.6
 
@@ -47,7 +51,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial changelog input
 
 
-[Unreleased]: https://github.com//brandography/m1-dev/compare/0.5.0...HEAD
+[Unreleased]: https://github.com//brandography/m1-dev/compare/0.6.0...HEAD
+[0.6.0]: https://github.com/brandography/m1-dev/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/brandography/m1-dev/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/brandography/m1-dev/compare/0.3.1...0.4.0
 [0.3.1]: https://github.com/brandography/m1-dev/compare/0.3.0...0.3.1
