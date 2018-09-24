@@ -58,6 +58,14 @@ RUN DEBIAN_FRONTEND=noninteractive apt-get -y install golang-go \
     && export GOPATH=/opt/go \
     && go get github.com/mailhog/mhsendmail
 
+# Install Ioncube - Needed for cart 2 quote extension
+# ADD automatically untars
+ADD https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz /tmp/
+RUN tar -xvf /tmp/ioncube_loaders_lin_x86-64.tar.gz -C /tmp/ \
+    && mkdir -p /usr/local/ioncube \
+    && cp /tmp/ioncube/ioncube_loader_* /usr/local/ioncube \
+    && rm -rf /tmp/ioncube
+
 ADD conf/php.ini /usr/local/etc/php/php.ini
 ADD conf/magento.conf /etc/apache2/sites-available/magento.conf
 ADD conf/custom-xdebug.ini /usr/local/etc/php/conf.d/custom-xdebug.ini

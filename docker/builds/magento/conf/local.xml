@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<config>
+    <global>
+        <install>
+            <date><![CDATA[Fri, 02 Jan 1920 0:0:00 +0000]]></date>
+        </install>
+        <crypt>
+            <key><![CDATA[]]></key>
+        </crypt>
+        <disable_local_modules>false</disable_local_modules>
+        <resources>
+            <db>
+                <table_prefix></table_prefix>
+            </db>
+            <default_setup>
+                <connection>
+                    <host>db</host>
+                    <username>magento</username>
+                    <password>magento</password>
+                    <dbname>magento</dbname>
+                    <active>1</active>
+                </connection>
+            </default_setup>
+        </resources>
+        <session_save>files</session_save>
+    </global>
+    <admin>
+        <routers>
+            <adminhtml>
+                <args>
+                    <frontName>admin</frontName>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+</config>
