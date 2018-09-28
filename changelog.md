@@ -6,6 +6,10 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 
+## [0.8.0] - 2018-09-28
+### Changed
+- db import script rmove cookie domain in db
+
 ## [0.7.0] - 2018-09-24
 ### Added
 - local.xml
@@ -56,7 +60,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Initial changelog input
 
 
-[Unreleased]: https://github.com//brandography/m1-dev/compare/0.7.0...HEAD
+[Unreleased]: https://github.com//brandography/m1-dev/compare/0.8.0...HEAD
+[0.8.0]: https://github.com/brandography/m1-dev/compare/0.7.0...0.8.0
 [0.7.0]: https://github.com/brandography/m1-dev/compare/0.6.0...0.7.0
 [0.6.0]: https://github.com/brandography/m1-dev/compare/0.5.0...0.6.0
 [0.5.0]: https://github.com/brandography/m1-dev/compare/0.4.0...0.5.0
