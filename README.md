@@ -41,12 +41,12 @@ make db-import file=<file name>
 ```
 Export a compressed database file into the docker/mysqldump folder.
 ```
-make db-dump
+make db-dump [strip=dev]
 ```
 ### Magento
-Use n98-magerun cli.
+Use n98-magerun cli. If the t command contains spaces use quotes.
 ```
-make n98 t=<commands>
+make n98 [t=<commands>]
 ```
 Enable/Disable xdebug.
 ```
