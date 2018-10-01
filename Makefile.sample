@@ -14,20 +14,20 @@ start: ## Start the docker containers
 stop: ## Stop the Docker containers
 	@cd $(DEV_DIR)/docker/tasks && ./stop.sh
 kill: ## Kill the Docker containers
-	@cd $(DEV_DIR)/docker/tasks && ./kill.sh $(user)
-shell: ## SSH into the magento container
+	@cd $(DEV_DIR)/docker/tasks && ./kill.sh
+shell: ## SSH into the magento container [ user=root (optional | for root access) ]
 	@cd $(DEV_DIR)/docker/tasks && ./shell.sh $(user)
 db-shell: ## SSH into the db container
 	@cd $(DEV_DIR)/docker/tasks && ./db-shell.sh
-db-import: ## Import the database 
+db-import: ## Import the database [ file=<filename> (get the filename of the gzipped sql file) ]
 	@cd $(DEV_DIR)/docker/tasks && ./db-import.sh $(file)
-db-dump: ## Export the database
-	@cd $(DEV_DIR)/docker/tasks && ./db-export.sh
+db-dump: ## Export the database [ strip=dev (optional | removes customer data) ]
+	@cd $(DEV_DIR)/docker/tasks && ./db-export.sh $(strip)
 
 ##
 ##=====================   Magento   =====================
 ##
-n98: ## n98-magerun commands
+n98: ## n98-magerun commands [ t=<n98 task> (optional | n98 commands, use quotes if contains spaces)]
 	@cd $(DEV_DIR)/tasks && ./n98.sh $(t)
 
 xdebug: ## xdebug commands
